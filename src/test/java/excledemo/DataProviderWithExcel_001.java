@@ -6,9 +6,10 @@ import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -23,7 +24,7 @@ public class DataProviderWithExcel_001 {
 
 	WebDriver driver;
 
-	@BeforeTest
+	@BeforeClass
 
 	public void beforeMethod() throws Exception {
 
@@ -41,7 +42,7 @@ public class DataProviderWithExcel_001 {
 
 		System.out.println(sUserName);
 
-		System.out.println("Login Method");
+		System.out.println("Login Method Started");
 		// Login
 
 		driver.findElement(By.name("email")).clear();
@@ -53,27 +54,11 @@ public class DataProviderWithExcel_001 {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-		//Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		// System.out.println("Loggedin");
-		
-		
+		driver.findElement(By.xpath("(//a[normalize-space()='Super Admin'])[1]")).click();
 
-		//driver.findElement(By.id("dropdownUser1")).click();
-
-		//driver.findElement(By.linkText("Logout")).click();
-		
-		
-
-		/*
-		 * try { System.out.println("Logged method");
-		 * 
-		 * // Logout
-		 * 
-		 * driver.findElement(By.xpath("//a[@class='btn btn-danger btn-sm btn-block']"))
-		 * .click(); } catch (Exception e) { // TODO: handle exception
-		 * System.out.println(Thread.currentThread().getStackTrace()); }
-		 */
+		driver.findElement(By.linkText("Logout")).click();
 
 	}
 
@@ -88,7 +73,7 @@ public class DataProviderWithExcel_001 {
 
 	}
 
-	@AfterTest
+	@AfterClass
 
 	public void afterMethod() {
 
